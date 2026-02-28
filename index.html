@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devam Lathiya | Creative Developer</title>
+
+    <!-- Fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div class="cursor"></div>
+
+    <header
+        style="position: fixed; top: 0; width: 100%; padding: 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100;">
+        <div class="logo mono" style="font-weight: 700;">DEVAM LATHIYA</div>
+        <nav class="desktop-nav" style="display: flex; gap: 2rem;">
+            <a href="#services" class="mono" style="text-decoration: none; color: inherit;">SERVICES</a>
+            <a href="#works" class="mono" style="text-decoration: none; color: inherit;">WORKS</a>
+            <a href="#about" class="mono" style="text-decoration: none; color: inherit;">ABOUT</a>
+        </nav>
+        <button class="mobile-menu-btn mono">☰</button>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <button class="mobile-menu-close">✕</button>
+        <nav class="mobile-nav-links">
+            <a href="#services" class="mono mobile-link">SERVICES</a>
+            <a href="#works" class="mono mobile-link">WORKS</a>
+            <a href="#about" class="mono mobile-link">ABOUT</a>
+            <a href="#contact" class="mono mobile-link">CONTACT</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="container" id="hero">
+            <h1 class="reveal" style="font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9; text-transform: uppercase;">
+                Developer<br>
+                Designer<br>
+                Creator
+            </h1>
+            <div class="reveal"
+                style="margin-top: 4rem; display: flex; align-items: flex-end; justify-content: space-between; width: 100%;">
+                <p class="mono" style="max-width: 300px;">BASED IN INDIA. WORKING GLOBALLY. SPECIALIZING IN PREMIUM
+                    DIGITAL EXPERIENCES.</p>
+                <a href="#contact" class="btn reveal">CONTACT ↗</a>
+            </div>
+        </section>
+
+        <!-- Services Section (Dark) -->
+        <section data-theme="dark" id="services">
+            <div class="container">
+                <p class="mono reveal" style="margin-bottom: 2rem;">(01) SERVICES</p>
+                <h2 class="reveal"
+                    style="font-size: clamp(2rem, 5vw, 4rem); text-transform: uppercase; margin-bottom: 4rem;">I help
+                    brands thrive<br>in the digital age.</h2>
+
+                <div class="grid-services">
+                    <div class="service-card reveal">
+                        <div class="service-image">
+                            <img src="services/web-dev.jpg" alt="Web Development">
+                        </div>
+                        <p class="mono">01/ WEB DEVELOPMENT</p>
+                        <p style="margin-top: 2rem; font-size: 1.1rem; line-height: 1.6;">Building scalable,
+                            high-performance web applications using modern technologies like React, Next.js, and
+                            Node.js.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-image">
+                            <img src="services/ui-ux.jpg" alt="UI/UX Design">
+                        </div>
+                        <p class="mono">02/ UI/UX DESIGN</p>
+                        <p style="margin-top: 2rem; font-size: 1.1rem; line-height: 1.6;">Designing intuitive,
+                            aesthetically pleasing interfaces that prioritize user experience and brand identity.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-image">
+                            <img src="services/creative-coding.jpg" alt="Creative Coding">
+                        </div>
+                        <p class="mono">03/ CREATIVE CODING</p>
+                        <p style="margin-top: 2rem; font-size: 1.1rem; line-height: 1.6;">Exploring the intersection of
+                            art and code through interactive animations, 3D graphics, and experimental UI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Works (Dark) -->
+        <section data-theme="dark" id="works">
+            <div class="container" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem;">
+                <p class="mono reveal" style="margin-bottom: 2rem;">(02) SELECTED WORKS</p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="reveal"
+                        style="aspect-ratio: 16/9; background: #111; border-radius: 1rem; overflow: hidden; position: relative;">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1000"
+                            style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+                        <div style="position: absolute; bottom: 2rem; left: 2rem;">
+                            <h3 class="mono">PROJECT ONE</h3>
+                            <p class="mono" style="opacity: 0.6; font-size: 0.7rem;">DESIGN / DEVELOPMENT / 2024</p>
+                        </div>
+                    </div>
+                    <div class="reveal"
+                        style="aspect-ratio: 16/9; background: #111; border-radius: 1rem; overflow: hidden; position: relative;">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=1000"
+                            style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+                        <div style="position: absolute; bottom: 2rem; left: 2rem;">
+                            <h3 class="mono">PROJECT TWO</h3>
+                            <p class="mono" style="opacity: 0.6; font-size: 0.7rem;">UI DESIGN / 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 6rem; text-align: center;">
+                    <a href="#" class="btn reveal">VIEW ARCHIVE ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div class="reveal image-hover-container"
+                        style="aspect-ratio: 1/1.2; border-radius: 1rem; overflow: hidden; position: relative; background: #eee;">
+                        <img src="services/about.jpg" class="base-image"
+                            style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                        <img src="services/about-hover.jpg" class="hover-image"
+                            style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
+                    </div>
+                    <div>
+                        <p class="mono reveal" style="margin-bottom: 2rem;">(03) ABOUT ME</p>
+                        <h2 class="reveal"
+                            style="font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.4; margin-bottom: 2rem;">
+                            I'm Devam, a Computer Engineering student based in India. With a solid foundation in science
+                            and a passion for web design, I build premium digital experiences.
+                        </h2>
+                        <p class="reveal" style="font-size: 1.1rem; line-height: 1.6; color: var(--text-dim);">
+                            After completing my 12th Science two years ago, I've dedicated myself to mastering the
+                            intersection of design and engineering. My focus is on creating seamless interfaces today,
+                            with a clear vision towards integrating AI/ML into the digital landscapes of tomorrow.
+                        </p>
+                        <div style="margin-top: 3rem;">
+                            <a href="javascript:void(0)" class="btn reveal" id="read-more-btn">READ MORE ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Marquee -->
+        <section id="skills" style="padding: 4rem 0;">
+            <div class="marquee-container">
+                <div class="marquee-content"
+                    style="font-size: clamp(4rem, 15vw, 12rem); font-weight: 900; opacity: 0.05; text-transform: uppercase;">
+                    COMPUTER ENGINEERING WEB DESIGN AI/ML (FUTURE) REACT NEXTJS TYPESCRIPT NODEJS &nbsp;
+                    COMPUTER ENGINEERING WEB DESIGN AI/ML (FUTURE) REACT NEXTJS TYPESCRIPT NODEJS &nbsp;
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="padding: 8rem 2rem 4rem;">
+            <div class="container"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 6rem;">
+                <div>
+                    <h2 class="reveal" style="font-size: clamp(2rem, 5vw, 4rem); text-transform: uppercase;">Let's
+                        work<br>together.</h2>
+                    <a href="mailto:devamlathiya001@gmail.com" class="reveal"
+                        style="display: block; margin-top: 2rem; font-size: 1.5rem; text-decoration: none; color: inherit; font-weight: 700;">devamlathiya001@gmail.com</a>
+                </div>
+                <div class="reveal">
+                    <form class="contact-form" action="https://formsubmit.co/devamlathiya001@gmail.com" method="POST">
+                        <div class="input-group">
+                            <input type="text" name="name" placeholder="YOUR NAME" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="YOUR EMAIL" required>
+                        </div>
+                        <div class="input-group">
+                            <textarea name="message" placeholder="MESSAGE" required></textarea>
+                        </div>
+                        <button type="submit" class="btn"
+                            style="align-self: flex-start; margin-top: 1rem; cursor: pointer;">SEND MESSAGE ↗</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="padding: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="logo mono" style="font-weight: 700;">DEVAM LATHIYA</div>
+                <div class="mono" style="text-align: right; opacity: 0.6;">
+                    <p>© 2026</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+
+    <!-- About Me Modal -->
+    <div id="about-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal">✕</button>
+            <p class="mono" style="opacity: 0.5; margin-bottom: 2rem;">(03) BIOGRAPHY</p>
+            <h2
+                style="font-size: clamp(1.5rem, 4vw, 3rem); text-transform: uppercase; margin-bottom: 2rem; line-height: 1.1;">
+                Fine-tuning the machine<br>behind the design.</h2>
+            <div data-lenis-prevent="true"
+                style="font-size: 1.2rem; line-height: 1.8; color: var(--text-dim); overflow-y: auto; max-height: 60vh; padding-right: 1rem;">
+                <p>Since completing my 12th Science two years ago, I’ve been obsessed with how we interact with
+                    technology. I’ve spent countless hours mastering the latest frameworks like React and Next.js,
+                    always with a focus on 'Premium Minimalism.'</p>
+                <p style="margin-top: 2rem;">I don't just write code; I design systems. When I'm not studying
+                    engineering principles, you’ll find me experimenting with creative coding and exploring how Machine
+                    Learning can make the web more personal.</p>
+                <p style="margin-top: 2rem;">My goal is to continue pushing the boundaries of digital canvases, creating
+                    experiences that don't just solve problems but elevate the human connection to the machine.</p>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
