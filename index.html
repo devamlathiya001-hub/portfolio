@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#e3e3dd">
     <title>Devam Lathiya | Creative Developer</title>
 
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
@@ -120,7 +121,7 @@
         width: 100%;
         height: 100vh;
         overflow: hidden;
-        background: var(--bg);
+        background: #e3e3dd;
     }
 
     .hero-spline {
@@ -135,6 +136,57 @@
         border: none;
         display: block;
         background: transparent;
+    }
+
+    /* Transparent overlay to track mouse over iframe */
+    .spline-mouse-tracker {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+        background: transparent;
+    }
+
+    /* ── Floating wave text background ── */
+    .hero-floating-text {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4rem;
+        pointer-events: none;
+    }
+
+    .floating-text-line {
+        display: flex;
+        white-space: nowrap;
+        animation: floatingWave 30s linear infinite;
+        will-change: transform;
+    }
+
+    .floating-text-line span {
+        font-family: var(--font-head);
+        font-size: clamp(4rem, 10vw, 12rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(17,17,17,0.15);
+        text-stroke: 2px rgba(17,17,17,0.15);
+        letter-spacing: 0.05em;
+        padding: 0 2rem;
+        user-select: none;
+    }
+
+    @keyframes floatingWave {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
     }
 
     /* Badge cover - hide bottom right distractions */
@@ -391,6 +443,52 @@
             height: 100px;
             z-index: 100;
         }
+        
+        .floating-text-line {
+            gap: 3rem;
+        }
+        
+        .floating-text-line span {
+            font-size: clamp(2.5rem, 12vw, 6rem);
+            -webkit-text-stroke: 1.5px rgba(17,17,17,0.12);
+            text-stroke: 1.5px rgba(17,17,17,0.12);
+        }
+        
+        .hero-floating-text {
+            gap: 2rem;
+        }
+        
+        /* Ensure Spline robot scales properly on mobile */
+        .hero-spline {
+            height: 100vh;
+            width: 100%;
+        }
+        
+        .hero-spline iframe {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    
+    /* ── Extra small mobile devices ── */
+    @media (max-width: 480px) {
+        .hero-left {
+            left: 1rem;
+            bottom: 2rem;
+        }
+        
+        .hero-hello { font-size: 0.75rem; }
+        .hero-fullname { font-size: clamp(1.4rem, 10vw, 2rem); }
+        
+        .hero-scroll {
+            bottom: 1rem;
+            font-size: 0.45rem;
+        }
+        
+        .floating-text-line span {
+            font-size: clamp(2rem, 10vw, 4rem);
+        }
     }
 
     /* ══════════════════════════════════════════════
@@ -619,6 +717,22 @@
     ══════════════════════════════════════════ -->
     <section id="hero" style="padding:0;border:none;">
 
+        <!-- Floating wave text background -->
+        <div class="hero-floating-text">
+            <div class="floating-text-line">
+                <span>DEVAM LATHIYA</span>
+                <span>DEVAM LATHIYA</span>
+                <span>DEVAM LATHIYA</span>
+                <span>DEVAM LATHIYA</span>
+            </div>
+            <div class="floating-text-line" style="animation-delay: -15s;">
+                <span>DEVAM LATHIYA</span>
+                <span>DEVAM LATHIYA</span>
+                <span>DEVAM LATHIYA</span>
+                <span>DEVAM LATHIYA</span>
+            </div>
+        </div>
+
         <div class="hero-spline">
             <iframe
                 id="splineRobot"
@@ -628,6 +742,7 @@
                 height="100%"
                 allowtransparency="true"
             ></iframe>
+            <div class="spline-mouse-tracker" id="splineMouseTracker"></div>
             <div class="spline-badge-cover"></div>
         </div>
 

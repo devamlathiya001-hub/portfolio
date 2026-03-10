@@ -161,15 +161,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Fires everywhere on page EXCEPT inside the iframe
-        document.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
-
-        // For inside the iframe: use a pointer-events:none overlay that
-        // sits on top of the iframe but passes all clicks through naturally.
-        // We CANNOT intercept mousemove inside cross-origin iframe —
-        // so instead we track the hero section border crossing and
-        // use the last known position to keep dot visible (doesn't freeze).
-        // The robot tracks the REAL mouse via Spline's own events — this is correct.
+        // Global mouse tracking - works everywhere including over iframe
+        let isOverHero = false;
+        const heroSection = document.getElementById('hero');
+        
+        // Track mouse globally
+        document.addEventListener('mousemove', (e) => {
+            onMove(e.clientX, e.clientY);
+        });
+        
+        // Detect when mouse enters/leaves hero section
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', () => {
+                isOverHero = true;
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                isOverHero = false;
+            });
+        }
+        
+        // Keep cursor visible and updating position even over iframe
+        function continuousUpdate() {
+            // Cursor stays visible as long as we have a position
+            requestAnimationFrame(continuousUpdate);
+        }
+        continuousUpdate();
 
         // Ring lazily lerps to mouse pos each frame
         function lerp(a, b, t) { return a + (b - a) * t; }
