@@ -122,12 +122,16 @@
         height: 100vh;
         overflow: hidden;
         background: #e3e3dd;
+        margin: 0;
+        padding: 0;
     }
 
     .hero-spline {
         position: absolute;
         inset: 0;
         z-index: 2;
+        width: 100%;
+        height: 100%;
     }
 
     .hero-spline iframe {
@@ -136,6 +140,9 @@
         border: none;
         display: block;
         background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     /* Transparent overlay to track mouse over iframe */
@@ -442,6 +449,7 @@
             width: 200px;
             height: 100px;
             z-index: 100;
+            display: none; /* Hide white gradient on mobile */
         }
         
         .floating-text-line {
@@ -458,15 +466,30 @@
             gap: 2rem;
         }
         
-        /* Ensure Spline robot scales properly on mobile */
+        /* Ensure Spline robot scales properly on mobile - NO SIDEBARS */
+        #hero {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            left: 0;
+            right: 0;
+        }
+        
         .hero-spline {
             height: 100vh;
-            width: 100%;
+            width: 100vw;
+            position: absolute;
+            inset: 0;
         }
         
         .hero-spline iframe {
             height: 100%;
             width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
             object-fit: cover;
         }
     }
@@ -488,6 +511,12 @@
         
         .floating-text-line span {
             font-size: clamp(2rem, 10vw, 4rem);
+        }
+        
+        /* Extra fix for very small screens */
+        #hero {
+            width: 100vw;
+            overflow-x: hidden;
         }
     }
 
@@ -698,17 +727,6 @@
     </div>
 
     <div class="pre-status" id="preStatus">Loading</div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay">
-        <button class="mobile-menu-close">✕</button>
-        <nav class="mobile-nav-links">
-            <a href="#services" class="mono mobile-link">Services</a>
-            <a href="#works"    class="mono mobile-link">Works</a>
-            <a href="#about"    class="mono mobile-link">About</a>
-            <a href="#contact"  class="mono mobile-link">Contact</a>
-        </nav>
-    </div>
 
     <main>
 
