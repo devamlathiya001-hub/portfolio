@@ -366,3 +366,209 @@ footer {
 }
 
 
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — full coverage
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Hide custom cursor on touch devices ── */
+@media (hover: none) {
+    .cursor-dot, .cursor-ring { display: none !important; }
+    * { cursor: auto !important; }
+}
+
+/* ══════════════════════════
+   TABLET — max 1024px
+══════════════════════════ */
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr 1.4fr;
+        gap: 3rem;
+    }
+
+    .grid-services {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .service-card:last-child {
+        grid-column: 1 / -1;
+        border-right: none;
+        border-bottom: none;
+        padding: 2.5rem 0 0 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .service-card:nth-child(2) {
+        border-right: none;
+        padding-right: 0;
+    }
+}
+
+/* ══════════════════════════
+   MOBILE — max 768px
+══════════════════════════ */
+@media (max-width: 768px) {
+
+    /* ── Global spacing ── */
+    section { padding: 5rem 1.25rem; }
+    .container { padding: 0 1.25rem; }
+
+    /* ── Services: single column ── */
+    .grid-services {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .service-card,
+    .service-card:nth-child(2),
+    .service-card:last-child {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        border-top: none;
+        padding: 2.5rem 0;
+        grid-column: auto;
+    }
+
+    .service-card:last-child { border-bottom: none; }
+
+    /* ── Works: hide tags, simplify grid ── */
+    .work-item {
+        grid-template-columns: 3rem 1fr;
+        gap: 1rem;
+        padding: 1.6rem 0.5rem;
+    }
+
+    .work-tags { display: none; }
+
+    .work-title { font-size: 1.1rem; }
+
+    /* ── About: single column ── */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-image-wrap {
+        aspect-ratio: 4/3;
+        max-height: 320px;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        margin-top: 2rem;
+    }
+
+    .stat { padding: 1.1rem; }
+    .stat-num { font-size: 1.6rem; }
+
+    /* ── Contact: single column ── */
+    #contact > .container > div[style*="grid"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 3rem !important;
+    }
+
+    /* ── Footer ── */
+    footer .container {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+
+    /* ── Section headings ── */
+    h2[style*="clamp"] {
+        font-size: clamp(1.8rem, 8vw, 3rem) !important;
+    }
+
+    /* ── Marquee text smaller ── */
+    .marquee-content {
+        font-size: clamp(3rem, 15vw, 6rem) !important;
+    }
+
+    /* ── Modal ── */
+    .modal-content {
+        padding: 2rem 1.5rem;
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* ── Buttons ── */
+    .btn { font-size: 0.62rem; padding: 0.7rem 1.4rem; }
+}
+
+/* ══════════════════════════
+   SMALL MOBILE — max 480px
+══════════════════════════ */
+@media (max-width: 480px) {
+
+    section { padding: 4rem 1rem; }
+    .container { padding: 0 1rem; }
+
+    /* ── Hero left panel: bigger name on small screens ── */
+    .hero-hello { font-size: 0.9rem; }
+    .hero-fullname { font-size: clamp(2.2rem, 11vw, 3rem) !important; }
+
+    /* ── About stats: 2 cols still but tighter ── */
+    .about-stats { gap: 0.6rem; }
+    .stat-num { font-size: 1.4rem; }
+    .stat-label { font-size: 0.55rem; }
+
+    /* ── Works ── */
+    .work-item { padding: 1.4rem 0.4rem; }
+    .work-title { font-size: 1rem; }
+    .work-num { font-size: 0.6rem; }
+
+    /* ── Contact email link ── */
+    a[href^="mailto"] {
+        font-size: 0.78rem !important;
+        word-break: break-all;
+    }
+
+    /* ── Preloader counter smaller ── */
+    .pre-counter-num { font-size: 2.5rem; }
+    .pre-name { font-size: clamp(1rem, 6vw, 1.8rem); }
+}
+
+/* ── Contact grid ── */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+}
+
+/* ── Contact section button container ── */
+#contact [style*="margin-top:3rem"] {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    /* ── Contact buttons: stack vertically on mobile ── */
+    #contact [style*="margin-top:3rem"] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    #contact .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* ── Even smaller buttons on tiny screens ── */
+    #contact .btn {
+        padding: 0.9rem 1.2rem;
+        font-size: 0.6rem;
+    }
+}

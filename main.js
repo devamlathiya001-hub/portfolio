@@ -291,4 +291,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ── Smooth scroll for all navigation links ────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if href is just "#" or empty
+            if (!href || href === '#') return;
+            
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                // Get target position
+                const targetPosition = targetElement.offsetTop;
+                const offset = 80; // Offset for fixed header/spacing
+                
+                // Use Lenis smooth scroll
+                lenis.scrollTo(targetPosition - offset, {
+                    duration: 1.5,
+                    easing: (t) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
+                    immediate: false
+                });
+                
+                // Close mobile menu if open
+                if (mobileMenuOverlay && mobileMenuOverlay.style.display === 'flex') {
+                    closeMobileMenu();
+                }
+            }
+        });
+    });
 });

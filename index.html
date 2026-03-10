@@ -137,16 +137,20 @@
         background: transparent;
     }
 
-    /* Badge cover */
+    /* Badge cover - hide bottom right distractions */
     .spline-badge-cover {
         position: absolute;
-        bottom: 14px;
-        right: 14px;
-        width: 175px;
-        height: 40px;
-        background: #d8d8d0;
-        border-radius: 999px;
-        z-index: 5;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        height: 120px;
+        background: linear-gradient(to top left,
+            #e3e3dd 0%,
+            #e3e3dd 40%,
+            rgba(227,227,221,0.95) 60%,
+            rgba(227,227,221,0) 100%
+        );
+        z-index: 60;
         pointer-events: none;
     }
 
@@ -169,6 +173,7 @@
         align-items: center;
         padding: 2rem 2.5rem;
         pointer-events: all;
+        gap: 1rem;
     }
 
     .hero-nav {
@@ -325,7 +330,7 @@
         bottom: 2.2rem;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 5;
+        z-index: 50;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -374,6 +379,17 @@
 
         .hero-right {
             display: none;
+        }
+        
+        .hero-scroll {
+            bottom: 1.5rem;
+            z-index: 100;
+        }
+        
+        .spline-badge-cover {
+            width: 200px;
+            height: 100px;
+            z-index: 100;
         }
     }
 
@@ -804,18 +820,18 @@
         <div class="container">
             <div class="section-label reveal">(04) Contact</div>
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;">
+            <div class="contact-grid">
                 <div>
                     <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;text-transform:uppercase;margin-bottom:2rem;">
                         Let's build<br>something<br>great.
                     </h2>
-                    <a href="mailto:devamlathiya001@gmail.com" class="reveal" style="display:inline-block;margin-top:1rem;font-size:1rem;text-decoration:none;color:var(--text-mid);font-family:var(--font-mono);letter-spacing:0.05em;transition:color 0.25s;">
-                        devamlathiya001@gmail.com
+                    <a href="/cdn-cgi/l/email-protection#9ffbfae9fef2f3feebf7f6e6feafafaedff8f2fef6f3b1fcf0f2" class="reveal" style="display:inline-block;margin-top:1rem;font-size:1rem;text-decoration:none;color:var(--text-mid);font-family:var(--font-mono);letter-spacing:0.05em;transition:color 0.25s;">
+                        <span class="__cf_email__" data-cfemail="f99d9c8f989495988d91908098c9c9c8b99e94989095d79a9694">[email&#160;protected]</span>
                     </a>
 
                     <div class="reveal" style="margin-top:3rem;display:flex;gap:1rem;">
-                        <a href="#" class="btn">GitHub ↗</a>
-                        <a href="#" class="btn">LinkedIn ↗</a>
+                        <a href="https://github.com/devamlathiya001-hub" target="_blank" rel="noopener noreferrer" class="btn">GitHub ↗</a>
+                        <a href="https://www.linkedin.com/in/devam-lathiya-76005b3a9" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn ↗</a>
                     </div>
                 </div>
 
@@ -855,10 +871,25 @@
             <div data-lenis-prevent="true" style="font-size:1rem;line-height:1.9;color:var(--text-mid);overflow-y:auto;max-height:55vh;padding-right:1rem;">
                 <p>Since completing my 12th Science, I've been obsessed with how we interact with technology — spending countless hours mastering React, Next.js, and the art of Premium Minimalism.</p>
                 <p style="margin-top:1.5rem;">I don't just write code; I design systems. When I'm not studying engineering principles, you'll find me experimenting with creative coding and exploring how Machine Learning can make the web more personal.</p>
-                <p style="margin-top:1.5rem;">My goal is to push the boundaries of digital canvases — creating experiences that don't just solve problems but elevate the human connection to the machine.</p>
+                <p style="margin-top:1.5rem;">My goal is to push the boundaries of digital canvases — creating experiences that don't just solve problems but leave a lasting impression.</p>
             </div>
         </div>
     </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay">
+        <button class="mobile-menu-close">✕</button>
+        <nav class="mobile-nav-links">
+            <a href="#works" class="mobile-link">Works</a>
+            <a href="#services" class="mobile-link">Services</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursorDot" class="cursor-dot"></div>
+    <div id="cursorRing" class="cursor-ring"></div>
 
     <script src="main.js"></script>
 </body>
