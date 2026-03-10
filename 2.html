@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Devam Lathiya - Premium Portfolio</title>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13daec",
+                        "secondary": "#3b82f6", /* Added secondary color for beautiful gradients */
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#0a1112", /* Made slightly darker for better contrast */
+                        "surface-dark": "#121f21",
+                        "border-dark": "#1f3336",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1112;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1f3336;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #13daec;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col bg-grid-pattern selection:bg-primary/30 selection:text-primary">
+
+    <header
+        class="w-full px-6 py-4 md:px-12 flex items-center justify-between sticky top-0 z-50 backdrop-blur-xl bg-background-light/70 dark:bg-background-dark/70 border-b border-slate-200 dark:border-border-dark shadow-sm">
+        <div class="flex items-center gap-2 group cursor-pointer transition-transform duration-300 hover:scale-105"
+            onclick="window.scrollTo(0,0)">
+            <div
+                class="size-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 text-primary group-hover:from-primary group-hover:to-secondary group-hover:text-background-dark transition-all duration-300">
+                <span class="material-symbols-outlined text-2xl">terminal</span>
+            </div>
+            <span
+                class="font-bold text-xl tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300">Devam
+                Lathiya</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-sm font-medium hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary transition-all duration-300 transform hover:-translate-y-0.5"
+                href="#section-1">Home</a>
+            <a class="text-sm font-medium hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary transition-all duration-300 transform hover:-translate-y-0.5"
+                href="#section-3">Work</a>
+            <a class="text-sm font-medium hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary transition-all duration-300 transform hover:-translate-y-0.5"
+                href="#section-4">Journey</a>
+            <a class="text-sm font-medium hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary transition-all duration-300 transform hover:-translate-y-0.5"
+                href="#section-5">Contact</a>
+        </nav>
+        <a href="#section-5"
+            class="hidden md:flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-secondary text-background-dark text-sm font-bold rounded-full hover:shadow-[0_0_20px_rgba(19,218,236,0.5)] transform hover:scale-105 transition-all duration-300">
+            <span>Let's Talk</span>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+        <button class="md:hidden p-2 text-slate-500 hover:text-primary transition-colors duration-300">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <section id="section-1" class="relative pt-12 md:pt-24 pb-20 px-6 md:px-12 border-b border-border-dark/50">
+        <div class="w-full max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div class="lg:col-span-7 flex flex-col gap-8 text-center lg:text-left order-2 lg:order-1">
+                <div class="space-y-4">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-dark border border-border-dark hover:border-primary/50 transition-colors duration-300 w-fit mx-auto lg:mx-0 shadow-[0_0_15px_rgba(0,0,0,0.2)]">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span
+                                class="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-[0_0_8px_#13daec]"></span>
+                        </span>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-300">Available for
+                            hire</span>
+                    </div>
+                    <h1
+                        class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] text-white">
+                        Devam <br class="hidden lg:block" />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-purple-400 animate-gradient-x">Lathiya</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-medium text-slate-300 tracking-wide">
+                        Computer Engineering Student
+                    </h2>
+                </div>
+                <p class="text-base md:text-lg text-slate-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Crafting pixel-perfect, accessible, and performant digital experiences. I specialize in system
+                    architecture and modern web technologies, turning complex problems into elegant solutions.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-4">
+                    <a href="#section-3"
+                        class="w-full sm:w-auto h-14 px-8 bg-gradient-to-r from-primary to-secondary text-background-dark text-base font-bold rounded-full hover:shadow-[0_0_25px_rgba(19,218,236,0.5)] transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 group">
+                        View Projects
+                        <span
+                            class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </a>
+                    <a href="#section-5"
+                        class="w-full sm:w-auto h-14 px-8 bg-surface-dark border border-border-dark hover:border-primary text-white text-base font-bold rounded-full hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(19,218,236,0.2)] transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2 relative group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-primary to-secondary blur-[100px] rounded-full transform translate-x-10 translate-y-10 -z-10 opacity-30 group-hover:opacity-50 transition-opacity duration-500">
+                </div>
+
+                <div
+                    class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-full lg:h-[500px] overflow-hidden rounded-[2rem] border border-border-dark bg-surface-dark shadow-2xl rotate-3 group-hover:rotate-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out">
+                    <img alt="Devam Lathiya"
+                        class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-60">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-2" class="py-20 px-6">
+        <div class="max-w-[1280px] mx-auto">
+            <div
+                class="border border-border-dark bg-gradient-to-br from-surface-dark to-background-dark py-12 mb-20 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.5)] transform hover:-translate-y-1 hover:border-primary/30 transition-all duration-500">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+                    <div class="flex flex-col items-center gap-2 group">
+                        <span
+                            class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary group-hover:scale-110 transition-transform duration-300">3+</span>
+                        <span
+                            class="text-sm text-slate-400 uppercase tracking-widest font-semibold group-hover:text-white transition-colors">Years
+                            Exp</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <span
+                            class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary group-hover:scale-110 transition-transform duration-300">20+</span>
+                        <span
+                            class="text-sm text-slate-400 uppercase tracking-widest font-semibold group-hover:text-white transition-colors">Projects</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <span
+                            class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary group-hover:scale-110 transition-transform duration-300">100%</span>
+                        <span
+                            class="text-sm text-slate-400 uppercase tracking-widest font-semibold group-hover:text-white transition-colors">Commitment</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <span
+                            class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary group-hover:scale-110 transition-transform duration-300">24/7</span>
+                        <span
+                            class="text-sm text-slate-400 uppercase tracking-widest font-semibold group-hover:text-white transition-colors">Support</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-4">Core <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Competencies</span>
+                    </h2>
+                    <p class="text-slate-400 max-w-xl text-lg">Focused on delivering high-quality code and robust
+                        architecture.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="group p-8 rounded-3xl bg-surface-dark border border-border-dark hover:border-primary/50 hover:bg-gradient-to-br hover:from-surface-dark hover:to-primary/10 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-10px_rgba(19,218,236,0.15)] relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity transform group-hover:scale-125 group-hover:rotate-12 duration-500">
+                        <span class="material-symbols-outlined text-9xl text-primary">dns</span>
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-primary mb-6 border border-primary/30 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-symbols-outlined text-3xl">dns</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                            Backend Systems</h3>
+                        <p class="text-slate-400 text-base leading-relaxed mb-8">Designing scalable database schemas and
+                            high-performance API architectures.</p>
+                        <ul class="flex flex-wrap gap-2">
+                            <li
+                                class="px-3 py-1.5 rounded-lg bg-background-dark text-xs font-semibold text-slate-300 border border-border-dark group-hover:border-primary/30 transition-colors">
+                                Node.js</li>
+                            <li
+                                class="px-3 py-1.5 rounded-lg bg-background-dark text-xs font-semibold text-slate-300 border border-border-dark group-hover:border-primary/30 transition-colors">
+                                Python</li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="group p-8 rounded-3xl bg-surface-dark border border-border-dark hover:border-secondary/50 hover:bg-gradient-to-br hover:from-surface-dark hover:to-secondary/10 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.15)] relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity transform group-hover:scale-125 group-hover:-rotate-12 duration-500">
+                        <span class="material-symbols-outlined text-9xl text-secondary">layers</span>
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary/20 to-purple-500/20 flex items-center justify-center text-secondary mb-6 border border-secondary/30 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-symbols-outlined text-3xl">layers</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold text-white mb-3 group-hover:text-secondary transition-colors duration-300">
+                            Frontend Dev</h3>
+                        <p class="text-slate-400 text-base leading-relaxed mb-8">Building highly responsive,
+                            pixel-perfect modern user interfaces.</p>
+                        <ul class="flex flex-wrap gap-2">
+                            <li
+                                class="px-3 py-1.5 rounded-lg bg-background-dark text-xs font-semibold text-slate-300 border border-border-dark group-hover:border-secondary/30 transition-colors">
+                                React</li>
+                            <li
+                                class="px-3 py-1.5 rounded-lg bg-background-dark text-xs font-semibold text-slate-300 border border-border-dark group-hover:border-secondary/30 transition-colors">
+                                Tailwind CSS</li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="group p-8 rounded-3xl bg-surface-dark border border-border-dark hover:border-emerald-400/50 hover:bg-gradient-to-br hover:from-surface-dark hover:to-emerald-400/10 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-10px_rgba(52,211,153,0.15)] relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity transform group-hover:scale-125 group-hover:rotate-12 duration-500">
+                        <span class="material-symbols-outlined text-9xl text-emerald-400">devices</span>
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-400/20 to-primary/20 flex items-center justify-center text-emerald-400 mb-6 border border-emerald-400/30 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-symbols-outlined text-3xl">devices</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors duration-300">
+                            UI/UX Design</h3>
+                        <p class="text-slate-400 text-base leading-relaxed mb-8">Crafting intuitive user journeys and
+                            stunning accessible design systems.</p>
+                        <ul class="flex flex-wrap gap-2">
+                            <li
+                                class="px-3 py-1.5 rounded-lg bg-background-dark text-xs font-semibold text-slate-300 border border-border-dark group-hover:border-emerald-400/30 transition-colors">
+                                Figma</li>
+                            <li
+                                class="px-3 py-1.5 rounded-lg bg-background-dark text-xs font-semibold text-slate-300 border border-border-dark group-hover:border-emerald-400/30 transition-colors">
+                                Prototyping</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-3"
+        class="py-24 bg-gradient-to-b from-background-dark to-surface-dark/50 border-y border-border-dark">
+        <div class="w-full max-w-[1280px] mx-auto px-6">
+            <div class="mb-16">
+                <div class="max-w-3xl">
+                    <h2 class="text-5xl font-bold mb-6 leading-tight text-white">Featured <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Projects</span>
+                    </h2>
+                    <p class="text-lg text-slate-400 max-w-2xl leading-relaxed">
+                        A collection of my work in computer engineering, ranging from autonomous systems to scalable
+                        microservices.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3 mt-10">
+                    <button
+                        class="px-6 py-2.5 text-sm font-bold rounded-full bg-gradient-to-r from-primary to-secondary text-background-dark shadow-[0_0_15px_rgba(19,218,236,0.3)] transform hover:scale-105 transition-all">All
+                        Projects</button>
+                    <button
+                        class="px-6 py-2.5 text-sm font-semibold rounded-full border border-border-dark hover:border-primary/50 text-slate-400 hover:text-white hover:bg-primary/10 transition-all duration-300">Web
+                        Dev</button>
+                    <button
+                        class="px-6 py-2.5 text-sm font-semibold rounded-full border border-border-dark hover:border-primary/50 text-slate-400 hover:text-white hover:bg-primary/10 transition-all duration-300">Machine
+                        Learning</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <article
+                    class="group flex flex-col bg-background-dark border border-border-dark rounded-2xl overflow-hidden hover:border-primary/60 transition-all duration-500 hover:shadow-[0_15px_40px_-10px_rgba(19,218,236,0.2)] transform hover:-translate-y-2">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style='background-image: url("https://images.unsplash.com/photo-1506606401537-ac45339d560d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");'>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-background-dark/90 backdrop-blur-md text-primary p-2.5 rounded-full border border-primary/30 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(19,218,236,0.5)] transition-all duration-300">
+                            <span class="material-symbols-outlined text-lg">rocket_launch</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-grow p-8">
+                        <h3
+                            class="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300 mb-3">
+                            Autonomous Drone Nav</h3>
+                        <p class="text-slate-400 mb-8 leading-relaxed flex-grow">A computer vision system enabling
+                            drones to navigate complex indoor environments without GPS.</p>
+                        <div class="pt-5 border-t border-border-dark flex flex-wrap gap-2">
+                            <span
+                                class="text-xs font-bold px-3 py-1.5 bg-surface-dark border border-border-dark rounded-md text-primary">Python</span>
+                            <span
+                                class="text-xs font-bold px-3 py-1.5 bg-surface-dark border border-border-dark rounded-md text-primary">OpenCV</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article
+                    class="group flex flex-col bg-background-dark border border-border-dark rounded-2xl overflow-hidden hover:border-secondary/60 transition-all duration-500 hover:shadow-[0_15px_40px_-10px_rgba(59,130,246,0.2)] transform hover:-translate-y-2">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style='background-image: url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");'>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-background-dark/90 backdrop-blur-md text-secondary p-2.5 rounded-full border border-secondary/30 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
+                            <span class="material-symbols-outlined text-lg">dns</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-grow p-8">
+                        <h3
+                            class="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-secondary group-hover:to-purple-400 transition-all duration-300 mb-3">
+                            Microservices Arch</h3>
+                        <p class="text-slate-400 mb-8 leading-relaxed flex-grow">Scalable backend architecture for a
+                            high-traffic retail platform handling 10k+ concurrent users.</p>
+                        <div class="pt-5 border-t border-border-dark flex flex-wrap gap-2">
+                            <span
+                                class="text-xs font-bold px-3 py-1.5 bg-surface-dark border border-border-dark rounded-md text-secondary">Go</span>
+                            <span
+                                class="text-xs font-bold px-3 py-1.5 bg-surface-dark border border-border-dark rounded-md text-secondary">Docker</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article
+                    class="group flex flex-col bg-background-dark border border-border-dark rounded-2xl overflow-hidden hover:border-emerald-400/60 transition-all duration-500 hover:shadow-[0_15px_40px_-10px_rgba(52,211,153,0.2)] transform hover:-translate-y-2">
+                    <div class="relative w-full aspect-[16/10] overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style='background-image: url("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");'>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-background-dark/90 backdrop-blur-md text-emerald-400 p-2.5 rounded-full border border-emerald-400/30 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.5)] transition-all duration-300">
+                            <span class="material-symbols-outlined text-lg">memory</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-grow p-8">
+                        <h3
+                            class="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-emerald-400 group-hover:to-primary transition-all duration-300 mb-3">
+                            Smart IoT Hub</h3>
+                        <p class="text-slate-400 mb-8 leading-relaxed flex-grow">Custom hardware interface for
+                            centralizing smart home devices using low-power protocols.</p>
+                        <div class="pt-5 border-t border-border-dark flex flex-wrap gap-2">
+                            <span
+                                class="text-xs font-bold px-3 py-1.5 bg-surface-dark border border-border-dark rounded-md text-emerald-400">C++</span>
+                            <span
+                                class="text-xs font-bold px-3 py-1.5 bg-surface-dark border border-border-dark rounded-md text-emerald-400">MQTT</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-4" class="py-24 px-6">
+        <div class="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-20">
+            <div class="flex-1">
+                <h2 class="text-4xl font-bold tracking-tight mb-14 text-white">My <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Journey</span>
+                </h2>
+                <div class="relative pl-8 border-l-2 border-border-dark space-y-14">
+                    <div class="relative group">
+                        <div
+                            class="absolute -left-[41px] top-1 size-6 rounded-full border-4 border-background-dark bg-gradient-to-r from-primary to-secondary group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(19,218,236,0.6)] transition-all duration-300">
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4 sm:items-center justify-between mb-3">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-primary transition-colors">
+                                Computer Engineering</h3>
+                            <span
+                                class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-primary/10 to-secondary/10 text-primary border border-primary/20">2021
+                                - Present</span>
+                        </div>
+                        <p class="text-slate-400 text-lg mb-4">Specializing in Software Architecture and Data
+                            Structures.</p>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-500">
+                            <span class="material-symbols-outlined text-[20px] text-primary">school</span>
+                            <span>University of Tech</span>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <div
+                            class="absolute -left-[41px] top-1 size-6 rounded-full border-4 border-background-dark bg-slate-600 group-hover:bg-gradient-to-r group-hover:from-secondary group-hover:to-purple-500 group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] transition-all duration-300">
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4 sm:items-center justify-between mb-3">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-secondary transition-colors">
+                                Software Intern</h3>
+                            <span
+                                class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-surface-dark text-slate-300 border border-border-dark group-hover:border-secondary/30 transition-colors">Summer
+                                2023</span>
+                        </div>
+                        <p class="text-slate-400 text-lg mb-4">Contributed to the backend API development using Node.js.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-500">
+                            <span class="material-symbols-outlined text-[20px] text-secondary">business_center</span>
+                            <span>TechCorp Inc.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 flex flex-col gap-10">
+                <h2 class="text-4xl font-bold tracking-tight text-white">Technical <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-purple-400">Toolkit</span>
+                </h2>
+                <div class="grid grid-cols-1 gap-6">
+                    <div
+                        class="bg-surface-dark border border-border-dark p-6 rounded-2xl hover:border-secondary/50 hover:bg-secondary/5 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.15)] group">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div
+                                class="size-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                                <span class="material-symbols-outlined text-2xl">html</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Frontend Frameworks</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2.5">
+                            <span
+                                class="px-4 py-2 text-sm font-bold rounded-lg bg-background-dark text-slate-300 border border-border-dark group-hover:border-secondary/30 hover:!bg-secondary hover:!text-white transition-all cursor-default">React.js</span>
+                            <span
+                                class="px-4 py-2 text-sm font-bold rounded-lg bg-background-dark text-slate-300 border border-border-dark group-hover:border-secondary/30 hover:!bg-secondary hover:!text-white transition-all cursor-default">TypeScript</span>
+                            <span
+                                class="px-4 py-2 text-sm font-bold rounded-lg bg-background-dark text-slate-300 border border-border-dark group-hover:border-secondary/30 hover:!bg-secondary hover:!text-white transition-all cursor-default">Tailwind
+                                CSS</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-dark border border-border-dark p-6 rounded-2xl hover:border-emerald-400/50 hover:bg-emerald-400/5 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(52,211,153,0.15)] group">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div
+                                class="size-12 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center group-hover:bg-emerald-400 group-hover:text-background-dark transition-colors duration-300">
+                                <span class="material-symbols-outlined text-2xl">database</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Backend & Databases</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2.5">
+                            <span
+                                class="px-4 py-2 text-sm font-bold rounded-lg bg-background-dark text-slate-300 border border-border-dark group-hover:border-emerald-400/30 hover:!bg-emerald-400 hover:!text-background-dark transition-all cursor-default">Node.js</span>
+                            <span
+                                class="px-4 py-2 text-sm font-bold rounded-lg bg-background-dark text-slate-300 border border-border-dark group-hover:border-emerald-400/30 hover:!bg-emerald-400 hover:!text-background-dark transition-all cursor-default">Python</span>
+                            <span
+                                class="px-4 py-2 text-sm font-bold rounded-lg bg-background-dark text-slate-300 border border-border-dark group-hover:border-emerald-400/30 hover:!bg-emerald-400 hover:!text-background-dark transition-all cursor-default">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-5" class="py-24 px-6 relative overflow-hidden">
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10">
+        </div>
+        <div
+            class="w-full h-[1px] bg-gradient-to-r from-transparent via-border-dark to-transparent absolute top-0 left-0">
+        </div>
+
+        <div class="w-full max-w-[1280px] mx-auto flex flex-col md:flex-row gap-16 md:gap-24 items-center">
+            <div class="flex-1">
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-tight text-white">
+                    Let's Build <br class="hidden md:block" />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Together.</span>
+                </h2>
+                <p class="text-xl text-slate-400 max-w-md leading-relaxed mb-12">
+                    I'm always open to discussing new projects, creative ideas or opportunities to be part of your
+                    visions.
+                </p>
+
+                <div class="flex flex-col gap-6">
+                    <a href="mailto:hello@devamlathiya.com"
+                        class="flex items-center gap-6 group p-4 rounded-2xl hover:bg-surface-dark transition-colors border border-transparent hover:border-border-dark">
+                        <div
+                            class="size-16 rounded-full bg-surface-dark border border-border-dark flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:border-transparent transition-all duration-300 shadow-lg text-white group-hover:text-background-dark group-hover:scale-110">
+                            <span class="material-symbols-outlined text-2xl">mail</span>
+                        </div>
+                        <div>
+                            <p class="text-sm uppercase tracking-widest text-primary font-bold mb-1">Email Me</p>
+                            <p class="font-medium text-xl text-white group-hover:text-primary transition-colors">
+                                hello@devamlathiya.com</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex-1 w-full max-w-[550px]">
+                <form
+                    class="space-y-6 bg-surface-dark/80 backdrop-blur-xl p-10 rounded-[2rem] border border-border-dark shadow-2xl relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold tracking-wide text-slate-300 mb-2" for="name">Your
+                            Name</label>
+                        <input
+                            class="block w-full px-5 py-4 bg-background-dark border border-border-dark rounded-xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:shadow-[0_0_20px_rgba(19,218,236,0.15)] transition-all duration-300"
+                            id="name" placeholder="John Doe" type="text" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold tracking-wide text-slate-300 mb-2" for="email">Email
+                            Address</label>
+                        <input
+                            class="block w-full px-5 py-4 bg-background-dark border border-border-dark rounded-xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent focus:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300"
+                            id="email" placeholder="john@example.com" type="email" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold tracking-wide text-slate-300 mb-2"
+                            for="message">Message</label>
+                        <textarea
+                            class="block w-full px-5 py-4 bg-background-dark border border-border-dark rounded-xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:shadow-[0_0_20px_rgba(19,218,236,0.15)] transition-all duration-300 resize-none"
+                            id="message" placeholder="Tell me about your project..." rows="4"></textarea>
+                    </div>
+                    <button
+                        class="w-full flex justify-center items-center gap-3 py-4 px-6 rounded-xl text-base font-black tracking-wide text-background-dark bg-gradient-to-r from-primary to-secondary hover:shadow-[0_0_30px_rgba(19,218,236,0.4)] transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
+                        type="button">
+                        <span class="relative z-10">Send Message</span>
+                        <span class="material-symbols-outlined text-xl relative z-10">send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full border-t border-border-dark py-10 bg-background-dark relative">
+        <div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3 text-white group cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div
+                    class="size-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-background-dark">
+                    <span class="material-symbols-outlined text-[20px]">terminal</span>
+                </div>
+                <span class="font-bold tracking-wide">Devam Lathiya</span>
+            </div>
+            <div class="text-sm font-medium text-slate-500">
+                © 2026 Devam Lathiya. All rights reserved.
+            </div>
+            <div class="flex items-center gap-6">
+                <a class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-primary transition-colors cursor-pointer group"
+                    onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                    Back to Top
+                    <span
+                        class="material-symbols-outlined text-base group-hover:-translate-y-1 transition-transform duration-300">arrow_upward</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

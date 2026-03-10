@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devam Lathiya | Creative Developer</title>
+
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+
+    <style>
+    /* ══════════════════════════════════════════════
+       PRELOADER
+    ══════════════════════════════════════════════ */
+    body.is-loading { overflow: hidden; }
+
+    #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pre-panel {
+        flex: 1;
+        background: #060606;
+    }
+
+    .pre-content {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        gap: 0;
+    }
+
+    .pre-name {
+        font-family: 'Satoshi', sans-serif;
+        font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+        font-weight: 900;
+        color: #fff;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .pre-name-char {
+        display: inline-block;
+        transform: translateY(110%);
+        opacity: 0;
+    }
+
+    .pre-line {
+        width: 0%;
+        height: 1px;
+        background: rgba(255,255,255,0.15);
+        margin-top: 1.4rem;
+    }
+
+    .pre-counter {
+        position: fixed;
+        bottom: 3rem;
+        right: 3rem;
+        z-index: 10000;
+        pointer-events: none;
+        text-align: right;
+    }
+
+    .pre-counter-num {
+        font-family: 'Satoshi', sans-serif;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 900;
+        color: #fff;
+        line-height: 1;
+        display: block;
+    }
+
+    .pre-counter-pct {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem;
+        color: rgba(255,255,255,0.35);
+        letter-spacing: 0.2em;
+    }
+
+    .pre-status {
+        position: fixed;
+        bottom: 3rem;
+        left: 3rem;
+        z-index: 10000;
+        pointer-events: none;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.62rem;
+        color: rgba(255,255,255,0.28);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 480px) {
+        .pre-counter { right: 1.5rem; bottom: 2rem; }
+        .pre-status  { left: 1.5rem; bottom: 2rem; }
+    }
+
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
+    #hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: var(--bg);
+    }
+
+    .hero-spline {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+    }
+
+    .hero-spline iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        background: transparent;
+    }
+
+    /* Badge cover */
+    .spline-badge-cover {
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        width: 175px;
+        height: 40px;
+        background: #d8d8d0;
+        border-radius: 999px;
+        z-index: 5;
+        pointer-events: none;
+    }
+
+    /* hero-ui is pointer-events:none so ALL mouse events pass through
+       to the Spline iframe — robot tracks the real cursor correctly.
+       Only children with pointer-events:all (nav, cta) intercept clicks */
+    .hero-ui {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    /* ── Top nav bar ── */
+    .hero-topbar {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 2rem 2.5rem;
+        pointer-events: all;
+    }
+
+    .hero-nav {
+        display: flex;
+        gap: 2.5rem;
+    }
+
+    .hero-nav a {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: rgba(0,0,0,0.5);
+        transition: color 0.25s;
+        position: relative;
+    }
+
+    .hero-nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -3px; left: 0;
+        width: 0; height: 1px;
+        background: #111;
+        transition: width 0.3s ease;
+    }
+
+    .hero-nav a:hover { color: #111; }
+    .hero-nav a:hover::after { width: 100%; }
+
+    /* ── LEFT panel — Hello + Name ── */
+    .hero-left {
+        position: absolute;
+        left: 2.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .hero-hello {
+        font-family: var(--font-head);
+        font-size: clamp(1rem, 1.5vw, 1.3rem);
+        font-weight: 400;
+        color: rgba(0,0,0,0.5);
+        font-style: italic;
+        letter-spacing: 0.01em;
+    }
+
+    .hero-fullname {
+        font-family: var(--font-head);
+        font-size: clamp(2rem, 4vw, 3.8rem);
+        font-weight: 900;
+        color: #111;
+        line-height: 0.92;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+    }
+
+    /* ── RIGHT panel — A Creative + stacked roles ── */
+    .hero-right {
+        position: absolute;
+        right: 2.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.3rem;
+    }
+
+    .hero-acreative {
+        font-family: var(--font-head);
+        font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+        font-weight: 400;
+        color: rgba(0,0,0,0.45);
+        font-style: italic;
+        letter-spacing: 0.01em;
+    }
+
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.4rem;
+        padding: 0.75rem 1.6rem;
+        border: 1.5px solid rgba(0,0,0,0.3);
+        border-radius: 9999px;
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #111;
+        background: rgba(255,255,255,0.4);
+        backdrop-filter: blur(10px);
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+        pointer-events: all;
+        white-space: nowrap;
+    }
+
+    .hero-cta:hover {
+        background: #111;
+        color: #f0ede8;
+        border-color: #111;
+    }
+
+    /* ── Right panel stacked words — moncy.dev style ── */
+    .hero-role-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0;
+        margin-top: 0.3rem;
+        line-height: 1;
+    }
+
+    /* Top word: outline/ghost — sits visually behind */
+    .hero-role-ghost {
+        font-family: var(--font-head);
+        font-size: clamp(2.6rem, 5.2vw, 5.5rem);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgba(0,0,0,0.22);
+        white-space: nowrap;
+        display: block;
+        line-height: 0.9;
+        /* shift left slightly so it peeks behind bottom word */
+        transform: translateX(1.2rem);
+    }
+
+    /* Bottom word: solid — sits visually in front */
+    .hero-role-main {
+        font-family: var(--font-head);
+        font-size: clamp(2.6rem, 5.2vw, 5.5rem);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: #111111;
+        white-space: nowrap;
+        display: block;
+        line-height: 0.9;
+        /* shift right so both words create depth overlap */
+        transform: translateX(-0.2rem);
+        margin-top: 0.15rem;
+    }
+
+    /* ── Bottom: scroll hint ── */
+    .hero-scroll {
+        position: absolute;
+        bottom: 2.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.45rem;
+        color: rgba(0,0,0,0.3);
+        pointer-events: none;
+        animation: scrollBob 2.5s ease-in-out infinite;
+    }
+
+    .hero-scroll span {
+        font-family: var(--font-mono);
+        font-size: 0.52rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+    }
+
+    @keyframes scrollBob {
+        0%,100% { transform: translateX(-50%) translateY(0); }
+        50%      { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* Mobile hamburger */
+    .hero-hamburger {
+        display: none;
+        background: none;
+        border: none;
+        color: #111;
+        font-size: 1.3rem;
+        cursor: pointer;
+        pointer-events: all;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+        .hero-nav { display: none; }
+        .hero-hamburger { display: block; }
+
+        .hero-left {
+            left: 1.5rem;
+            top: auto;
+            bottom: 3rem;
+            transform: none;
+        }
+
+        .hero-fullname { font-size: clamp(1.6rem, 8vw, 2.8rem); }
+
+        .hero-right {
+            display: none;
+        }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION LABELS
+    ══════════════════════════════════════════════ */
+    .section-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 3rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .section-label::after {
+        content: '';
+        flex: 1;
+        max-width: 60px;
+        height: 1px;
+        background: var(--line);
+    }
+
+    /* ══════════════════════════════════════════════
+       WORKS — hover cards
+    ══════════════════════════════════════════════ */
+    .works-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .work-item {
+        display: grid;
+        grid-template-columns: 4rem 1fr auto;
+        align-items: center;
+        gap: 2rem;
+        padding: 2.2rem 0;
+        border-bottom: 1px solid var(--line);
+        cursor: pointer;
+        transition: background 0.25s;
+        border-radius: 0.5rem;
+        padding-left: 0.5rem;
+    }
+
+    .work-item:first-child { border-top: 1px solid var(--line); }
+
+    .work-item:hover {
+        background: var(--bg-hover);
+        padding-left: 1.5rem;
+    }
+
+    .work-num {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--text-dim);
+        letter-spacing: 0.1em;
+    }
+
+    .work-title {
+        font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        transition: color 0.25s;
+    }
+
+    .work-item:hover .work-title { color: var(--text); }
+
+    .work-tags {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .work-tag {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        border: 1px solid var(--line);
+        padding: 0.3rem 0.7rem;
+        border-radius: 9999px;
+        transition: border-color 0.25s, color 0.25s;
+    }
+
+    .work-item:hover .work-tag {
+        border-color: rgba(255,255,255,0.2);
+        color: var(--text-mid);
+    }
+
+    /* ══════════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════════ */
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 6rem;
+        align-items: start;
+    }
+
+    .about-image-wrap {
+        position: relative;
+        aspect-ratio: 3/4;
+        border-radius: 1rem;
+        overflow: hidden;
+        background: #1a1a1a;
+    }
+
+    .about-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(20%);
+        transition: filter 0.5s, transform 0.6s;
+    }
+
+    .about-image-wrap:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.03);
+    }
+
+    .about-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .stat {
+        padding: 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: 0.75rem;
+        background: var(--bg-card);
+        transition: border-color 0.3s;
+    }
+
+    .stat:hover { border-color: rgba(255,255,255,0.18); }
+
+    .stat-num {
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        margin-top: 0.5rem;
+    }
+
+    /* ══════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+        .hero-nav { display: none; }
+        .hero-hamburger { display: block; }
+        .hero-name { left: 1.5rem; }
+        .hero-role { left: 1.5rem; bottom: 2rem; }
+        .hero-tagline { display: none; }
+
+        .about-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .work-item {
+            grid-template-columns: 3rem 1fr;
+        }
+
+        .work-tags { display: none; }
+    }
+
+    @media (max-width: 480px) {
+        .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ══════════════════════════════════════════
+         PRELOADER
+    ══════════════════════════════════════════ -->
+    <div id="preloader">
+        <div class="pre-panel pre-panel-top"></div>
+        <div class="pre-panel pre-panel-bottom"></div>
+    </div>
+
+    <div class="pre-content" id="preContent">
+        <div class="pre-name" id="preName"></div>
+        <div class="pre-line" id="preLine"></div>
+    </div>
+
+    <div class="pre-counter" id="preCounter">
+        <span class="pre-counter-num" id="preNum">0</span>
+        <span class="pre-counter-pct">%</span>
+    </div>
+
+    <div class="pre-status" id="preStatus">Loading</div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay">
+        <button class="mobile-menu-close">✕</button>
+        <nav class="mobile-nav-links">
+            <a href="#services" class="mono mobile-link">Services</a>
+            <a href="#works"    class="mono mobile-link">Works</a>
+            <a href="#about"    class="mono mobile-link">About</a>
+            <a href="#contact"  class="mono mobile-link">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+
+    <!-- ══════════════════════════════════════════
+         HERO — robot full bleed
+    ══════════════════════════════════════════ -->
+    <section id="hero" style="padding:0;border:none;">
+
+        <div class="hero-spline">
+            <iframe
+                id="splineRobot"
+                src="https://my.spline.design/nexbotrobotcharacterconcept-Wh5pNESrbTikrXfvONlxIQ1l/"
+                frameborder="0"
+                width="100%"
+                height="100%"
+                allowtransparency="true"
+            ></iframe>
+            <div class="spline-badge-cover"></div>
+        </div>
+
+        <div class="hero-ui">
+
+            <!-- Top bar: nav only (name shown center-left) -->
+            <div class="hero-topbar reveal">
+                <nav class="hero-nav">
+                    <a href="#services">Services</a>
+                    <a href="#works">Works</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <button class="hero-hamburger mobile-menu-btn">☰</button>
+            </div>
+
+            <!-- Left panel: Hello + name -->
+            <div class="hero-left reveal">
+                <span class="hero-hello">Hello! I&#39;m</span>
+                <div class="hero-fullname">Devam<br>Lathiya</div>
+            </div>
+
+            <!-- Right panel: moncy.dev stacked static words -->
+            <div class="hero-right reveal">
+                <span class="hero-acreative">A Creative</span>
+                <div class="hero-role-stack">
+                    <span class="hero-role-ghost">Developer</span>
+                    <span class="hero-role-main">Designer</span>
+                </div>
+                <a href="#contact" class="hero-cta">Get in touch ↗</a>
+            </div>
+
+            <!-- Bottom centre: scroll -->
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M7 1v12M2 8l5 5 5-5"/>
+                </svg>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SERVICES
+    ══════════════════════════════════════════ -->
+    <section id="services">
+        <div class="container">
+            <div class="section-label reveal">(01) Services</div>
+
+            <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;text-transform:uppercase;margin-bottom:5rem;">
+                I help brands<br>thrive in the<br>digital age.
+            </h2>
+
+            <div class="grid-services">
+                <div class="service-card reveal">
+                    <div class="service-image"><img src="services/web-dev.jpg" alt="Web Development"></div>
+                    <p class="mono" style="color:var(--text-dim);margin-bottom:1rem;">01 / Web Development</p>
+                    <p style="font-size:1rem;line-height:1.7;color:var(--text-mid);">Building scalable, high-performance web applications using modern technologies like React, Next.js, and Node.js.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-image"><img src="services/ui-ux.jpg" alt="UI/UX Design"></div>
+                    <p class="mono" style="color:var(--text-dim);margin-bottom:1rem;">02 / UI/UX Design</p>
+                    <p style="font-size:1rem;line-height:1.7;color:var(--text-mid);">Designing intuitive, aesthetically pleasing interfaces that prioritize user experience and brand identity.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-image"><img src="services/creative-coding.jpg" alt="Creative Coding"></div>
+                    <p class="mono" style="color:var(--text-dim);margin-bottom:1rem;">03 / Creative Coding</p>
+                    <p style="font-size:1rem;line-height:1.7;color:var(--text-mid);">Exploring the intersection of art and code through interactive animations, 3D graphics, and experimental UI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         WORKS
+    ══════════════════════════════════════════ -->
+    <section id="works">
+        <div class="container">
+            <div class="section-label reveal">(02) Selected Works</div>
+
+            <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;text-transform:uppercase;margin-bottom:4rem;">
+                Recent<br>projects.
+            </h2>
+
+            <div class="works-list">
+                <div class="work-item reveal">
+                    <span class="work-num">01</span>
+                    <span class="work-title">Project One</span>
+                    <div class="work-tags">
+                        <span class="work-tag">Design</span>
+                        <span class="work-tag">Development</span>
+                        <span class="work-tag">2024</span>
+                    </div>
+                </div>
+                <div class="work-item reveal">
+                    <span class="work-num">02</span>
+                    <span class="work-title">Project Two</span>
+                    <div class="work-tags">
+                        <span class="work-tag">UI Design</span>
+                        <span class="work-tag">2024</span>
+                    </div>
+                </div>
+                <div class="work-item reveal">
+                    <span class="work-num">03</span>
+                    <span class="work-title">Project Three</span>
+                    <div class="work-tags">
+                        <span class="work-tag">React</span>
+                        <span class="work-tag">Next.js</span>
+                        <span class="work-tag">2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:3.5rem;" class="reveal">
+                <a href="#" class="btn">View all work ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════════ -->
+    <section id="about">
+        <div class="container">
+            <div class="section-label reveal">(03) About Me</div>
+
+            <div class="about-grid">
+                <div class="about-image-wrap reveal image-hover-container">
+                    <img src="services/about.jpg" class="base-image" alt="Devam Lathiya">
+                    <img src="services/about-hover.jpg" class="hover-image" alt="Devam Lathiya" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;">
+                </div>
+
+                <div>
+                    <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;letter-spacing:-0.03em;line-height:1.1;margin-bottom:2rem;">
+                        Building premium<br>digital experiences<br>from India.
+                    </h2>
+
+                    <p class="reveal" style="font-size:1.05rem;line-height:1.8;color:var(--text-mid);margin-bottom:1.5rem;">
+                        I'm Devam, a Computer Engineering student with a solid foundation in science and a deep passion for web design and development.
+                    </p>
+
+                    <p class="reveal" style="font-size:1.05rem;line-height:1.8;color:var(--text-mid);margin-bottom:3rem;">
+                        My focus is on creating seamless, high-performance interfaces — with a clear vision towards integrating AI/ML into the digital landscapes of tomorrow.
+                    </p>
+
+                    <div class="about-stats reveal">
+                        <div class="stat">
+                            <div class="stat-num">2+</div>
+                            <div class="stat-label">Years experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">15+</div>
+                            <div class="stat-label">Projects built</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">∞</div>
+                            <div class="stat-label">Curiosity</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">AI</div>
+                            <div class="stat-label">Future focus</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:2.5rem;" class="reveal">
+                        <a href="javascript:void(0)" class="btn" id="read-more-btn">Read more ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         MARQUEE
+    ══════════════════════════════════════════ -->
+    <section id="skills" style="padding:0;border:none;">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                REACT &nbsp;·&nbsp; NEXT.JS &nbsp;·&nbsp; TYPESCRIPT &nbsp;·&nbsp; NODE.JS &nbsp;·&nbsp; UI/UX &nbsp;·&nbsp; GSAP &nbsp;·&nbsp; THREE.JS &nbsp;·&nbsp; AI/ML &nbsp;·&nbsp;
+                REACT &nbsp;·&nbsp; NEXT.JS &nbsp;·&nbsp; TYPESCRIPT &nbsp;·&nbsp; NODE.JS &nbsp;·&nbsp; UI/UX &nbsp;·&nbsp; GSAP &nbsp;·&nbsp; THREE.JS &nbsp;·&nbsp; AI/ML &nbsp;·&nbsp;
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════════ -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-label reveal">(04) Contact</div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;">
+                <div>
+                    <h2 class="reveal" style="font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.03em;line-height:0.95;text-transform:uppercase;margin-bottom:2rem;">
+                        Let's build<br>something<br>great.
+                    </h2>
+                    <a href="mailto:devamlathiya001@gmail.com" class="reveal" style="display:inline-block;margin-top:1rem;font-size:1rem;text-decoration:none;color:var(--text-mid);font-family:var(--font-mono);letter-spacing:0.05em;transition:color 0.25s;">
+                        devamlathiya001@gmail.com
+                    </a>
+
+                    <div class="reveal" style="margin-top:3rem;display:flex;gap:1rem;">
+                        <a href="#" class="btn">GitHub ↗</a>
+                        <a href="#" class="btn">LinkedIn ↗</a>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <form class="contact-form" action="https://formsubmit.co/devamlathiya001@gmail.com" method="POST">
+                        <div class="input-group"><input type="text"  name="name"    placeholder="Your Name"  required></div>
+                        <div class="input-group"><input type="email" name="email"   placeholder="Your Email" required></div>
+                        <div class="input-group"><textarea           name="message" placeholder="Message"    required></textarea></div>
+                        <div style="margin-top:2rem;">
+                            <button type="submit" class="btn">Send message ↗</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════ -->
+    <footer>
+        <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="mono" style="color:var(--text-dim);font-size:0.65rem;letter-spacing:0.18em;">DEVAM LATHIYA</span>
+            <span class="mono" style="color:var(--text-dim);font-size:0.65rem;letter-spacing:0.18em;">© 2026</span>
+        </div>
+    </footer>
+
+    </main>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal">✕</button>
+            <p class="mono" style="color:var(--text-dim);margin-bottom:2rem;">(03) Biography</p>
+            <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);text-transform:uppercase;margin-bottom:2rem;line-height:1.1;font-weight:900;letter-spacing:-0.02em;">Fine-tuning the machine<br>behind the design.</h2>
+            <div data-lenis-prevent="true" style="font-size:1rem;line-height:1.9;color:var(--text-mid);overflow-y:auto;max-height:55vh;padding-right:1rem;">
+                <p>Since completing my 12th Science, I've been obsessed with how we interact with technology — spending countless hours mastering React, Next.js, and the art of Premium Minimalism.</p>
+                <p style="margin-top:1.5rem;">I don't just write code; I design systems. When I'm not studying engineering principles, you'll find me experimenting with creative coding and exploring how Machine Learning can make the web more personal.</p>
+                <p style="margin-top:1.5rem;">My goal is to push the boundaries of digital canvases — creating experiences that don't just solve problems but elevate the human connection to the machine.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
